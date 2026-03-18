@@ -1,0 +1,27 @@
+# Model weights (downloaded via kit unpack or setup_models.sh)
+models/stt/weights/*
+models/llm/weights/*
+models/tts/weights/*
+!models/*/weights/.gitkeep
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.local

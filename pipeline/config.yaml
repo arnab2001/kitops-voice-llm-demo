@@ -1,0 +1,10 @@
+# Voice AI Pipeline Configuration
+# Paths are relative to the project root.
+
+stt_config: ./models/stt/config.yaml
+llm_config: ./models/llm/config.yaml
+tts_config: ./models/tts/config.yaml
+
+# WebSocket server settings
+host: 0.0.0.0
+port: 8765

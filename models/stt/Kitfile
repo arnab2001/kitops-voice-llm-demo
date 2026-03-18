@@ -1,0 +1,39 @@
+manifestVersion: "1.0.0"
+package:
+  name: voice-stt-faster-whisper
+  version: 1.0.0
+  description: >-
+    Faster-Whisper Small model for real-time speech-to-text
+    in telephony pipelines. Optimized for 8kHz/16kHz audio
+    with VAD filtering for natural conversation flow.
+  authors: ["Jozu AI"]
+
+model:
+  name: faster-whisper-small
+  path: ./weights/
+  framework: CTranslate2
+  version: small-v3
+  description: >-
+    Faster-Whisper Small model in CTranslate2 format.
+    ~500MB, runs on CPU with <200ms latency per utterance.
+  license: MIT
+  parameters:
+    beam_size: 3
+    language: en
+    compute_type: int8
+    vad_filter: true
+    vad_parameters:
+      min_silence_duration_ms: 500
+
+code:
+  - path: ./src/
+    description: STT inference service with streaming support
+
+docs:
+  - path: ./README.md
+    description: Model card and usage instructions
+
+datasets:
+  - name: test-audio
+    path: ./test_data/
+    description: Sample 8kHz/16kHz audio files for validation

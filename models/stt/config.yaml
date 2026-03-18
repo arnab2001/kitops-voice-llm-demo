@@ -1,0 +1,13 @@
+# Faster-Whisper STT Configuration
+# These values are also declared in the Kitfile parameters section.
+# This file is used at runtime by the STT service.
+
+model_path: ./weights
+device: cpu
+compute_type: int8
+beam_size: 3
+language: en
+vad_filter: true
+vad_parameters:
+  min_silence_duration_ms: 500
+  threshold: 0.5

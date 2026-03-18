@@ -1,0 +1,11 @@
+# Qwen3 LLM Configuration
+# These values are also declared in the Kitfile parameters section.
+# This file is used at runtime by the LLM service.
+
+model_path: ./weights/qwen3-0.6b-q4_k_m.gguf
+context_length: 4096
+n_threads: 4
+temperature: 0.7
+top_p: 0.9
+max_tokens: 256
+system_prompt_path: ./prompts/system_prompt.md

@@ -1,0 +1,36 @@
+manifestVersion: "1.0.0"
+package:
+  name: voice-tts-kokoro
+  version: 1.0.0
+  description: >-
+    Kokoro TTS model for natural speech synthesis in
+    call centre pipelines. 82M parameters, sounds better
+    than models 10x its size.
+  authors: ["Jozu AI"]
+
+model:
+  name: kokoro-v1.0
+  path: ./weights/
+  framework: PyTorch
+  version: "1.0"
+  description: >-
+    Kokoro TTS model weights and voice packs.
+    82M params, 24kHz output, multiple voice profiles.
+  license: Apache-2.0
+  parameters:
+    sample_rate: 24000
+    default_voice: af_heart
+    speed: 1.0
+
+code:
+  - path: ./src/
+    description: TTS inference service with streaming audio output
+
+docs:
+  - path: ./README.md
+    description: Model card and usage instructions
+
+datasets:
+  - name: voice-profiles
+    path: ./voice_profiles/
+    description: Voice configuration profiles for different agent personas

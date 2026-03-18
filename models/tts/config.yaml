@@ -1,0 +1,9 @@
+# Kokoro TTS Configuration
+# These values are also declared in the Kitfile parameters section.
+# This file is used at runtime by the TTS service.
+
+model_path: ./weights
+lang_code: a
+default_voice: af_heart
+sample_rate: 24000
+speed: 1.0

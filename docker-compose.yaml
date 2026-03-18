@@ -1,0 +1,25 @@
+services:
+  voice-pipeline:
+    build: .
+    ports:
+      - "8765:8765"
+    volumes:
+      # Model weights — populated by `kit unpack` or `scripts/setup_models.sh`
+      # Mounted read-only so the container can't modify them.
+      - ./models/stt/weights:/app/models/stt/weights:ro
+      - ./models/llm/weights:/app/models/llm/weights:ro
+      - ./models/tts/weights:/app/models/tts/weights:ro
+    environment:
+      - LOG_LEVEL=info
+      - PYTHONPATH=/app
+    healthcheck:
+      test: ["CMD", "python3", "-c", "import socket; s=socket.create_connection(('localhost',8765),2); s.close()"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 60s
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 4G

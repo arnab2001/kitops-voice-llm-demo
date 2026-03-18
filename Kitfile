@@ -1,0 +1,53 @@
+manifestVersion: "1.0.0"
+package:
+  name: voice-ai-pipeline
+  version: 1.0.0
+  description: >-
+    Complete call centre voice AI pipeline bundling STT, LLM, and TTS
+    models with orchestration code. One `kit unpack` to run the full demo.
+    For production use, see individual ModelKits under models/.
+  authors: ["Jozu AI"]
+
+# The LLM is the primary model — it's the "brain" of the agent.
+# STT and TTS weights are bundled as datasets (a practical trade-off
+# since Kitfile supports one model per artifact).
+model:
+  name: qwen3-0.6B
+  path: ./models/llm/weights/qwen3-0.6b-q4_k_m.gguf
+  framework: llama.cpp
+  version: 0.6B-Q4_K_M
+  description: >-
+    Qwen3 0.6B — the core reasoning model for the voice agent.
+    STT and TTS models are bundled as datasets for single-artifact convenience.
+  license: Apache-2.0
+  parameters:
+    context_length: 4096
+    temperature: 0.7
+
+datasets:
+  - name: stt-faster-whisper
+    path: ./models/stt/weights/
+    description: Faster-Whisper Small model weights (CTranslate2 format)
+  - name: tts-kokoro
+    path: ./models/tts/weights/
+    description: Kokoro TTS model weights and voice packs
+
+code:
+  - path: ./pipeline/
+    description: Pipecat voice pipeline orchestration and WebSocket server
+  - path: ./models/stt/src/
+    description: STT inference service
+  - path: ./models/llm/src/
+    description: LLM inference service
+  - path: ./models/tts/src/
+    description: TTS inference service
+  - path: ./scripts/
+    description: Deployment and model management scripts
+
+prompts:
+  - path: ./models/llm/prompts/system_prompt.md
+    description: Call centre agent system prompt
+
+docs:
+  - path: ./README.md
+    description: Project documentation and quickstart guide

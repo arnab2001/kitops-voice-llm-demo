@@ -1,0 +1,42 @@
+manifestVersion: "1.0.0"
+package:
+  name: voice-llm-qwen3
+  version: 1.0.0
+  description: >-
+    Qwen3-0.6B model for call centre agent responses.
+    Lightweight MoE architecture with fast inference
+    for real-time conversational AI.
+  authors: ["Jozu AI"]
+
+model:
+  name: qwen3-0.6B
+  path: ./weights/qwen3-0.6b-q4_k_m.gguf
+  framework: llama.cpp
+  version: 0.6B-Q4_K_M
+  description: >-
+    Qwen3 0.6B parameter model quantized to Q4_K_M GGUF format.
+    ~400MB, runs on CPU with <300ms first-token latency.
+  license: Apache-2.0
+  parameters:
+    context_length: 4096
+    temperature: 0.7
+    top_p: 0.9
+    max_tokens: 256
+    repeat_penalty: 1.1
+
+code:
+  - path: ./src/
+    description: LLM inference service with streaming token generation
+
+prompts:
+  - path: ./prompts/system_prompt.md
+    description: Call centre agent system prompt with persona and guidelines
+
+docs:
+  - path: ./README.md
+    description: Model card and usage instructions
+
+datasets:
+  - name: test-conversations
+    path: ./test_data/
+    description: Sample call transcripts for validation
