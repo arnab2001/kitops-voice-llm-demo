@@ -11,7 +11,7 @@ Language model for the voice AI pipeline. Uses [Qwen3-0.6B](https://huggingface.
 | Size | ~400MB |
 | Context | 4096 tokens |
 | First token | <300ms (CPU) |
-| Architecture | MoE (Mixture of Experts) |
+| Architecture | Dense transformer |
 
 ## KitOps Usage
 

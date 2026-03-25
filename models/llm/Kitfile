@@ -4,7 +4,7 @@ package:
   version: 1.0.0
   description: >-
     Qwen3-0.6B model for call centre agent responses.
-    Lightweight MoE architecture with fast inference
+    Lightweight dense architecture with fast inference
     for real-time conversational AI.
   authors: ["Jozu AI"]
 

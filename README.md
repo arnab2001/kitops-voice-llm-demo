@@ -44,7 +44,7 @@ KitOps packages each model into a versioned, scannable **ModelKit**. Jozu Hub st
 | Role | Model | Size | Why |
 |------|-------|------|-----|
 | STT | Faster-Whisper Small | ~500MB | CTranslate2 backend, <200ms latency, VAD built-in |
-| LLM | Qwen3-0.6B (Q4_K_M) | ~400MB | MoE architecture, fast CPU inference, good for scripted flows |
+| LLM | Qwen3-0.6B (Q4_K_M) | ~400MB | Dense model, fast CPU inference, good for scripted flows |
 | TTS | Kokoro | ~300MB | 82M params, sounds better than models 10x its size |
 
 ## Quick Start
